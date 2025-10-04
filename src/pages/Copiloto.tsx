@@ -1,9 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { AlertCircle, MessageSquare, FileText, Calendar, AlertTriangle, Quote } from "lucide-react";
+import { AlertCircle, FileText, Calendar, AlertTriangle, Quote } from "lucide-react";
+import BotpressInit from "@/components/BotpressInit";
 
 const Copiloto = () => {
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in">
+      <BotpressInit />
       <div className="max-w-5xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
@@ -28,23 +30,14 @@ const Copiloto = () => {
           </CardContent>
         </Card>
 
-        {/* Chat Embed Placeholder */}
+        {/* Botpress Chat Widget */}
         <Card className="shadow-medium">
           <CardContent className="pt-6">
             <div 
-              id="copiloto-container" 
-              className="min-h-[500px] flex items-center justify-center bg-muted/30 rounded-lg border-2 border-dashed border-border"
-            >
-              <div className="text-center space-y-3 p-8">
-                <MessageSquare className="w-16 h-16 mx-auto text-muted-foreground" />
-                <p className="text-lg font-medium text-foreground">Chat del Copiloto</p>
-                <p className="text-sm text-muted-foreground max-w-md">
-                  Aquí se integrará el widget de chat interactivo. Este es un espacio reservado para el script/iframe del bot.
-                </p>
-              </div>
-            </div>
-            {/* Placeholder para el script real del chat */}
-            {/* <script src="URL_DEL_CHAT"></script> */}
+              id="webchat" 
+              className="w-full rounded-lg overflow-hidden"
+              style={{ height: '600px' }}
+            />
           </CardContent>
         </Card>
 
