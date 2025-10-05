@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { fichasTecnicas, cursosDeVida, intervenciones, FichaTecnica } from "@/data/biblioteca";
 import { Search, ExternalLink, FileText, Users, Activity } from "lucide-react";
 
-const Biblioteca = () => {
+const Recursos = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCurso, setSelectedCurso] = useState("Todos");
   const [selectedIntervencion, setSelectedIntervencion] = useState("Todas");
@@ -180,4 +180,4 @@ const Biblioteca = () => {
   );
 };
 
-export default Biblioteca;
+export default Recursos;
