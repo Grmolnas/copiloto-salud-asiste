@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { fichasTecnicas, cursosDeVida, intervenciones, FichaTecnica } from "@/data/biblioteca";
-import { Search, ExternalLink, FileText, Users, Activity, Download } from "lucide-react";
+import { Search, ExternalLink, FileText, Users, Activity, Copy, Download } from "lucide-react";
 
 const Recursos = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -209,6 +209,18 @@ const Recursos = () => {
             )}
           </div>
           <DialogFooter className="gap-2">
+            {current?.fuente && (
+              <Button 
+                variant="outline" 
+                onClick={() => {
+                  const cita = `Fuente: ${current.fuente} — versión ${current.version || ""}`;
+                  navigator.clipboard.writeText(cita);
+                }}
+              >
+                <Copy className="w-4 h-4 mr-2" />
+                Copiar cita
+              </Button>
+            )}
             {current?.pdfUrl && (
               <a 
                 className="inline-flex items-center justify-center px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium transition-colors"

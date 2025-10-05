@@ -4,7 +4,9 @@ export interface FichaTecnica {
   cursoDeVida: string;
   intervencion: string;
   tema: string;
-  pdfUrl: string;
+  pdfUrl: string;      // Ruta absoluta desde /public (ej: "/recursos/infografia-ccu.pdf")
+  fuente?: string;
+  version?: string;
 }
 
 export const fichasTecnicas: FichaTecnica[] = [
@@ -46,15 +48,19 @@ export const fichasTecnicas: FichaTecnica[] = [
     cursoDeVida: "Juventud",
     intervencion: "Valoración integral",
     tema: "Salud del Adolescente",
-    pdfUrl: "#",
+    pdfUrl: "/recursos/ficha-adolescencia-rpms.pdf",
+    fuente: "Resolución 3280 de 2018 - RPMS",
+    version: "1.0",
   },
   {
     id: 6,
-    titulo: "Detección temprana de alteraciones en el adulto",
+    titulo: "Infografía - Cáncer de Cuello Uterino (CCU)",
     cursoDeVida: "Adultez",
     intervencion: "Valoración integral",
-    tema: "Enfermedades Crónicas",
-    pdfUrl: "#",
+    tema: "Prevención de Cáncer",
+    pdfUrl: "/recursos/infografia-ccu.pdf",
+    fuente: "Ministerio de Salud - Programa CCU",
+    version: "2.1",
   },
   {
     id: 7,
