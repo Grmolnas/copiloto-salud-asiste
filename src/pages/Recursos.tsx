@@ -3,13 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { fichasTecnicas, cursosDeVida, intervenciones, FichaTecnica } from "@/data/biblioteca";
-import { Search, ExternalLink, FileText, Users, Activity } from "lucide-react";
+import { Search, ExternalLink, FileText, Users, Activity, Download } from "lucide-react";
 
 const Recursos = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCurso, setSelectedCurso] = useState("Todos");
   const [selectedIntervencion, setSelectedIntervencion] = useState("Todas");
+  const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState<FichaTecnica | null>(null);
 
   const filteredFichas = fichasTecnicas.filter((ficha) => {
     const matchesSearch = ficha.titulo.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -56,10 +59,13 @@ const Recursos = () => {
           <Button 
             className="w-full" 
             variant="outline"
-            onClick={() => window.open(ficha.pdfUrl, '_blank')}
+            onClick={() => {
+              setCurrent(ficha);
+              setOpen(true);
+            }}
           >
-            <ExternalLink className="w-4 h-4 mr-2" />
-            Abrir PDF
+            <FileText className="w-4 h-4 mr-2" />
+            Ver
           </Button>
         </div>
       </CardContent>
@@ -176,6 +182,46 @@ const Recursos = () => {
           </CardContent>
         </Card>
       </div>
+
+      {/* PDF Viewer Modal */}
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-5xl h-[80vh]">
+          <DialogHeader>
+            <DialogTitle>{current?.titulo}</DialogTitle>
+          </DialogHeader>
+          <div className="flex-1 overflow-hidden rounded-lg border h-full">
+            {current?.pdfUrl?.toLowerCase().endsWith(".pdf") ? (
+              <iframe 
+                title={current?.titulo || "Documento"} 
+                src={current?.pdfUrl} 
+                className="w-full h-full" 
+                loading="lazy" 
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center">
+                <img 
+                  src={current?.pdfUrl} 
+                  alt={current?.titulo} 
+                  className="max-w-full max-h-full" 
+                  loading="lazy" 
+                />
+              </div>
+            )}
+          </div>
+          <DialogFooter className="gap-2">
+            {current?.pdfUrl && (
+              <a 
+                className="inline-flex items-center justify-center px-4 py-2 border border-input bg-background hover:bg-accent hover:text-accent-foreground rounded-md text-sm font-medium transition-colors"
+                href={current.pdfUrl} 
+                download
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Descargar
+              </a>
+            )}
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
