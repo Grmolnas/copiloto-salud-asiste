@@ -27,10 +27,10 @@ const Inicio = () => {
                   Abrir Copiloto
                 </Button>
               </Link>
-              <Link to="/biblioteca">
+              <Link to="/recursos">
                 <Button size="lg" variant="outline" className="w-full sm:w-auto">
                   <BookOpen className="mr-2 h-5 w-5" />
-                  Ver Biblioteca
+                  Ver Recursos
                 </Button>
               </Link>
             </div>
