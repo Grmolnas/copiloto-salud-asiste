@@ -1,11 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertCircle, FileText, Calendar, AlertTriangle, Quote } from "lucide-react";
-import BotpressInit from "@/components/BotpressInit";
 
 const Copiloto = () => {
   return (
     <div className="container mx-auto px-4 py-8 animate-fade-in">
-      <BotpressInit />
       <div className="max-w-5xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
@@ -27,17 +25,6 @@ const Copiloto = () => {
                 </p>
               </div>
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Botpress Chat Widget */}
-        <Card className="shadow-medium">
-          <CardContent className="pt-6">
-            <div 
-              id="webchat" 
-              className="w-full rounded-lg overflow-hidden"
-              style={{ height: '600px' }}
-            />
           </CardContent>
         </Card>
 
