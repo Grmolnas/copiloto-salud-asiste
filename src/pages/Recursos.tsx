@@ -96,6 +96,7 @@ const Recursos = () => {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10"
+                  aria-label="Buscar recurso por título o tema"
                 />
               </div>
 
@@ -106,7 +107,7 @@ const Recursos = () => {
                     Curso de vida
                   </label>
                   <Select value={selectedCurso} onValueChange={setSelectedCurso}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Filtrar por curso de vida">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -124,7 +125,7 @@ const Recursos = () => {
                     Tipo de intervención
                   </label>
                   <Select value={selectedIntervencion} onValueChange={setSelectedIntervencion}>
-                    <SelectTrigger>
+                    <SelectTrigger aria-label="Filtrar por intervención">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
