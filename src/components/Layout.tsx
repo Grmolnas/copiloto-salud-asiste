@@ -15,9 +15,9 @@ const Layout = ({ children }: LayoutProps) => {
     { path: "/", label: "Inicio" },
     { path: "/copiloto", label: "Copiloto" },
     { path: "/recursos", label: "Recursos" },
+    { path: "/prueba-conocimiento", label: "Prueba tu Conocimiento" },
     { path: "/acerca", label: "Acerca de" },
     { path: "/politica", label: "Política de uso" },
-    { path: "/contacto", label: "Contacto" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
