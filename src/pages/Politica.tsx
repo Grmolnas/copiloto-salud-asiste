@@ -1,9 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AlertTriangle, Shield, Database, FileCheck } from "lucide-react";
-
 const Politica = () => {
-  return (
-    <div className="container mx-auto px-4 py-8 animate-fade-in">
+  return <div className="container mx-auto px-4 py-8 animate-fade-in">
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
@@ -208,16 +206,8 @@ const Politica = () => {
         </Card>
 
         {/* Contact */}
-        <Card className="bg-accent/20 border-accent">
-          <CardContent className="pt-6">
-            <p className="text-sm text-muted-foreground">
-              Si tienes dudas sobre el uso apropiado del Copiloto RIAS 3280 o necesitas reportar un problema, contacta al equipo de soporte a través de la página de <a href="/contacto" className="text-primary hover:underline font-medium">Contacto</a>.
-            </p>
-          </CardContent>
-        </Card>
+        
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Politica;
