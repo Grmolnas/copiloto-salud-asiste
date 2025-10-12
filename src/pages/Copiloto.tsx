@@ -40,7 +40,7 @@ const Copiloto: React.FC = () => {
     <main className="max-w-7xl mx-auto px-4 py-8">
       <div className="grid lg:grid-cols-[320px_1fr] gap-6">
         {/* Panel de Ideas - Arriba en móvil, izquierda en desktop */}
-        <aside className="order-1 lg:order-1 space-y-4">
+        <aside className="order-1 lg:order-1 space-y-4 relative z-10">
           <Card className="rounded-2xl border-2">
             <CardHeader>
               <div className="flex items-start gap-2">
@@ -60,10 +60,10 @@ const Copiloto: React.FC = () => {
                   variant="outline"
                   size="sm"
                   onClick={() => copiarPregunta(pregunta)}
-                  className="w-full justify-start text-left h-auto py-3 px-4 rounded-xl hover:bg-accent/50 transition-colors"
+                  className="w-full justify-start text-left h-auto py-3 px-4 rounded-xl hover:bg-accent/50 transition-colors whitespace-normal break-words"
                 >
                   <Copy className="w-4 h-4 mr-2 shrink-0" />
-                  <span className="text-xs leading-relaxed">{pregunta}</span>
+                  <span className="text-xs leading-relaxed break-words">{pregunta}</span>
                 </Button>
               ))}
             </CardContent>
@@ -84,7 +84,7 @@ const Copiloto: React.FC = () => {
         </aside>
 
         {/* Card del Chat - Abajo en móvil, derecha en desktop */}
-        <Card className="order-2 lg:order-2 rounded-2xl border-2 overflow-hidden">
+        <Card className="order-2 lg:order-2 rounded-2xl border-2 overflow-hidden relative z-0">
           <CardHeader className="border-b bg-muted/30">
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1">
