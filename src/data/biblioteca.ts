@@ -5,7 +5,8 @@ export interface FichaTecnica {
   cursoDeVida: string;
   intervencion: string;
   tema: string;
-  pdfUrl: string;      // Ruta absoluta desde /public (ej: "/recursos/infografia-ccu.pdf")
+  htmlUrl?: string;    // URL para visualización web (opcional)
+  pdfUrl?: string;     // Ruta absoluta desde /public (ej: "/recursos/infografia-ccu.pdf")
   fuente?: string;
   version?: string;
 }

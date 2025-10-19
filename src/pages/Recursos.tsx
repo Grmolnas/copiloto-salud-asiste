@@ -73,18 +73,20 @@ const Recursos = () => {
             <Eye className="w-4 h-4 mr-2" />
             Ver
           </Button>
-          <Button 
-            className="flex-1" 
-            variant="outline"
-            size="sm"
-            asChild
-            aria-label={`Descargar ${ficha.titulo}`}
-          >
-            <a href={ficha.pdfUrl} download>
-              <FileDown className="w-4 h-4 mr-2" />
-              Descargar
-            </a>
-          </Button>
+          {ficha.pdfUrl && (
+            <Button 
+              className="flex-1" 
+              variant="outline"
+              size="sm"
+              asChild
+              aria-label={`Descargar ${ficha.titulo}`}
+            >
+              <a href={ficha.pdfUrl} download>
+                <FileDown className="w-4 h-4 mr-2" />
+                Descargar
+              </a>
+            </Button>
+          )}
         </div>
       </CardContent>
     </Card>
@@ -95,9 +97,9 @@ const Recursos = () => {
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold text-foreground">Biblioteca de Fichas Técnicas</h1>
+          <h1 className="text-4xl font-bold text-foreground">Recursos 3280 — Fichas, infografías y checklists</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Accede directamente a las fichas técnicas validadas que utiliza el Copiloto. Todos los documentos han sido revisados y aprobados para su uso educativo.
+            En esta sección encontrarás recursos prácticos basados en la Resolución 3280 de 2018: fichas A4 para consulta rápida, infografías para socialización, checklists operativos y flujogramas de decisión. Puedes verlos en la web o descargarlos en PDF. Todos incluyen fundamento normativo y versión.
           </p>
         </div>
 
@@ -243,23 +245,32 @@ const Recursos = () => {
             <DialogTitle>{current?.titulo}</DialogTitle>
           </DialogHeader>
           <div className="flex-1 overflow-hidden rounded-lg border h-full">
-            {current?.pdfUrl?.toLowerCase().endsWith(".pdf") ? (
-              <iframe 
-                title={current?.titulo || "Documento"} 
-                src={current?.pdfUrl} 
-                className="w-full h-full" 
-                loading="lazy" 
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center">
-                <img 
-                  src={current?.pdfUrl} 
-                  alt={current?.titulo} 
-                  className="max-w-full max-h-full" 
-                  loading="lazy" 
-                />
-              </div>
-            )}
+            {(() => {
+              const url = current?.htmlUrl ?? current?.pdfUrl;
+              if (!url) return <div className="flex items-center justify-center h-full text-muted-foreground">No hay contenido disponible</div>;
+              
+              if (url.toLowerCase().endsWith(".pdf")) {
+                return (
+                  <iframe 
+                    title={current?.titulo || "Documento"} 
+                    src={url} 
+                    className="w-full h-full" 
+                    loading="lazy" 
+                  />
+                );
+              }
+              
+              return (
+                <div className="w-full h-full flex items-center justify-center">
+                  <img 
+                    src={url} 
+                    alt={current?.titulo} 
+                    className="max-w-full max-h-full" 
+                    loading="lazy" 
+                  />
+                </div>
+              );
+            })()}
           </div>
           <DialogFooter className="gap-2">
             {current?.fuente && (
