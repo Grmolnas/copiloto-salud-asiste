@@ -15,6 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
     { path: "/", label: "Inicio" },
     { path: "/copiloto", label: "Copiloto" },
     { path: "/recursos", label: "Recursos" },
+    { path: "/prueba-conocimiento", label: "Prueba tu Conocimiento" },
     { path: "/acerca", label: "Acerca" },
     { path: "/politica", label: "Política" },
   ];
